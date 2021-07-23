@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Examen_ll.Models.Tareas>
+
+    @{
+        ViewData["Title"] = "Index";
+    }
+
+    <h1>Tareas</h1>
+
+    <div class="row search">
+        <div class="col-auto">
+            <input type="text" class="form-control-plaintext" id="txt-search" placeholder="Buscar..." />
+        </div>
+        <div class="col-auto">
+
+            <a asp-action="Create" class="btn btn-success"><i class="far fa-file"></i> Add New</a>
+        </div>
+    </div>
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titulo)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaDeInicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaFinal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tarea)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titulo)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaDeInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaFinal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tarea.CategoriaNombre)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.TareaId"><i class="fas fa-edit"></i> Edit</a>
+                        <a asp-action="Details" class="btn btn-success" asp-route-id="@item.TareaId"><i class="far fa-file-alt"></i> Details</a>
+                        <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.TareaId"><i class="fas fa-trash-alt"></i> Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+    <link rel="stylesheet" href="~/css/common.css" />
+    <script src="~/js/departaments.js" asp-append-version="true"></script>
+

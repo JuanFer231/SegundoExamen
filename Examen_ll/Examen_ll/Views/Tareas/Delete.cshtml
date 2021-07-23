@@ -1,0 +1,137 @@
+﻿@model Examen_ll.Models.Tareas
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<style>
+    h1 {
+        color: #00008B;
+    }
+</style>
+<h1 align="center">Delete Homework</h1>
+<hr />
+
+<style>
+
+    /* CSS Document */
+
+    .grupoizquierda {
+        float: left;
+    }
+
+    .grupoderecha {
+        float: left;
+    }
+
+    .titulo {
+        background: #483D8B;
+        color: white;
+        font-size: 35px;
+        font-family: arial;
+    }
+
+    .datos label {
+        width: 25%;
+        float: left;
+        color: #CF0;
+    }
+
+
+    input[type=text] {
+        border: 2px solid grey;
+        border-radius: 4px;
+    }
+
+        input[type=text]:focus {
+            border: 3px solid #555;
+        }
+</style>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+
+
+<body style="background-color: #677381;">
+</body>
+
+<div class="row">
+    <div class="col-md-9">
+        <form asp-action="Delete">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TareaId" />
+            <div class="form-group">
+                <div class="form-group">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="TareaId" />
+                        <input type="submit" class="btn btn-danger" value="Borrar" />
+                        <a asp-action="Index" class="btn btn-success">Regresar</a>
+                    </form>
+                </div>
+
+                <div class="input-group">
+                    <label asp-for="Titulo" class="control-label"></label>
+                    <input asp-for="Titulo" class="form-control" placeholder="@Html.DisplayFor(model => model.Titulo)" disabled />
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <label asp-for="Descripcion" class="control-label"></label>
+                            <input asp-for="Descripcion" class="form-control" placeholder="@Html.DisplayFor(model => model.Descripcion)" disabled />
+                            <span asp-validation-for="Descripcion" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="input-group">
+
+                            <label asp-for="FechaDeInicio" class="control-label"></label>
+                            <input asp-for="FechaDeInicio" class="form-control" placeholder="@Html.DisplayFor(model => model.FechaDeInicio)" disabled />
+                            <span asp-validation-for="FechaDeInicio" class="text-danger"></span>
+
+                            <span class="input-group-addon"></span>
+
+                            <label asp-for="FechaFinal" class="control-label"></label>
+                            <input asp-for="FechaFinal" class="form-control" placeholder="@Html.DisplayFor(model => model.FechaFinal)" disabled />
+                            <span asp-validation-for="FechaFinal" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <<label asp-for="CategoriaId" class="control-label"></label>
+                            <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
